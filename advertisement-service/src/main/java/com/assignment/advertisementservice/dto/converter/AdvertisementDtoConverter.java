@@ -11,7 +11,7 @@ public class AdvertisementDtoConverter {
                 from.getTitle(),
                 from.getPrice(),
                 from.getDetailMessage(),
-                from.getId()
+                from.getUserId()
         );
     }
 }
