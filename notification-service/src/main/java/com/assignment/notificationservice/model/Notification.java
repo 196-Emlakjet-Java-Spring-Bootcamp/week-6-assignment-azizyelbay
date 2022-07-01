@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -19,7 +20,7 @@ public class Notification {
     private Long userId;
     private Long advertisementId;
     private String message;
-    private Date date;
+    private LocalDateTime date;
     private String state;
 
 }

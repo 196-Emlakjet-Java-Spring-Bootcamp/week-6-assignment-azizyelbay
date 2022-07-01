@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/v1/sale-advertisement")
+@RequestMapping("/v1/advertisement")
 public class AdvertisementController {
     private final AdvertisementService advertisementService;
 

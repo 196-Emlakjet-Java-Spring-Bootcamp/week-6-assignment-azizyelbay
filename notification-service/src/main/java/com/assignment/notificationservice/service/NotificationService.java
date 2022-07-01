@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Service
@@ -31,10 +32,9 @@ public class NotificationService {
         notification.setMessage("notification message!!!!!!!!!");
         notification.setUserId(advertisement.getUserId());
         notification.setState("SENT");
-        notification.setDate(new Date());
+        notification.setDate(LocalDateTime.now());
 
-        logger.info("notification id = " + notification.getId() +
-                " advertisement id = " + notification.getAdvertisementId() +
+        logger.info(" advertisement id = " + notification.getAdvertisementId() +
                 " message = " + notification.getMessage() +
                 " user id = " + notification.getUserId() +
                 " state = " + notification.getState());

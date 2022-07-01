@@ -8,6 +8,8 @@ import com.assignment.advertisementservice.repository.AdvertisementRepository;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class AdvertisementService {
 
@@ -29,8 +31,10 @@ public class AdvertisementService {
         advertisement.setDetailMessage(createAdvertisementRequest.getDetailMessage());
         advertisement.setPrice(createAdvertisementRequest.getPrice());
         advertisement.setUserId(createAdvertisementRequest.getUserId());
+        advertisement.setCreatedAt(LocalDateTime.now());
 
-        kafkaAdvertisementTemplate.send("advertisement-topic", advertisement);
-        return converter.convert(advertisementRepository.save(advertisement));
+        Advertisement saveToDB = advertisementRepository.save(advertisement);
+        kafkaAdvertisementTemplate.send("advertisement-topic", saveToDB);
+        return converter.convert(saveToDB);
     }
 }
